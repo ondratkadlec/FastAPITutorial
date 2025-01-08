@@ -6,11 +6,7 @@ from app.config import settings
 
 
 SQLALCHEMY_DATABASE_URL = f'postgresql+psycopg2://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}?sslmode=require'
-
-conn_args = {
-    "sslrootcert": "/home/otkadlec001/certs/ca.pem",
-}
-engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args=conn_args)
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
